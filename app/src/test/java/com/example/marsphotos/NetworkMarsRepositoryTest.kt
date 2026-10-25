@@ -22,6 +22,7 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+/** Comprueba los datos devueltos por el Repository sin conexión de red. */
 class NetworkMarsRepositoryTest {
 
     @Test

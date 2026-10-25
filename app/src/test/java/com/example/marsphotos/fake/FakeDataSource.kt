@@ -17,6 +17,7 @@ package com.example.marsphotos.fake
 
 import com.example.marsphotos.model.MarsPhoto
 
+/** Fotografías fijas utilizadas como resultados conocidos en las pruebas. */
 object FakeDataSource {
 
     private const val idOne = "img1"

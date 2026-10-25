@@ -18,6 +18,7 @@ package com.example.marsphotos.fake
 import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.network.MarsApiService
 
+/** Sustituye el servicio HTTP por una respuesta en memoria. */
 class FakeMarsApiService : MarsApiService {
     override suspend fun getPhotos(): List<MarsPhoto> {
         return FakeDataSource.photosList

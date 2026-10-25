@@ -25,6 +25,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 
+/** Verifica que el ViewModel presente los datos del Repository simulado. */
 class MarsViewModelTest {
 
     @get:Rule

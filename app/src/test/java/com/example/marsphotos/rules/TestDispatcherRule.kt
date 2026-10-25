@@ -24,6 +24,7 @@ import kotlinx.coroutines.test.setMain
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
+/** Establece un dispatcher controlado mientras se ejecutan las pruebas de corrutinas. */
 @OptIn(ExperimentalCoroutinesApi::class)
 class TestDispatcherRule(
     private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher()
