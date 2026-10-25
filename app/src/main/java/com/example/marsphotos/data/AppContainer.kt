@@ -21,39 +21,27 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 
-/**
- * Dependency Injection container at the application level.
- */
+/** Expone las dependencias que utiliza la aplicación. */
 interface AppContainer {
     val marsPhotosRepository: MarsPhotosRepository
 }
 
-/**
- * Implementation for the Dependency Injection container at the application level.
- *
- * Variables are initialized lazily and the same instance is shared across the whole app.
- */
+/** Construye una única configuración de Retrofit y comparte el Repository. */
 class DefaultAppContainer : AppContainer {
     private val baseUrl = "https://android-kotlin-fun-mars-server.appspot.com/"
 
-    /**
-     * Use the Retrofit builder to build a retrofit object using a kotlinx.serialization converter
-     */
+    /** Configura el cliente HTTP y convierte el JSON recibido en objetos Kotlin. */
     private val retrofit: Retrofit = Retrofit.Builder()
         .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseUrl)
         .build()
 
-    /**
-     * Retrofit service object for creating api calls
-     */
+    /** Crea el servicio REST al utilizarlo por primera vez. */
     private val retrofitService: MarsApiService by lazy {
         retrofit.create(MarsApiService::class.java)
     }
 
-    /**
-     * DI implementation for Mars photos repository
-     */
+    /** Comparte la instancia del Repository que consulta el servicio de Marte. */
     override val marsPhotosRepository: MarsPhotosRepository by lazy {
         NetworkMarsPhotosRepository(retrofitService)
     }

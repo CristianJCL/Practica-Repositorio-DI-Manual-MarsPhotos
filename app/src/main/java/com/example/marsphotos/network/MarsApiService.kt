@@ -19,15 +19,9 @@ package com.example.marsphotos.network
 import com.example.marsphotos.model.MarsPhoto
 import retrofit2.http.GET
 
-/**
- * A public interface that exposes the [getPhotos] method
- */
+/** Describe las solicitudes HTTP disponibles para consultar la API de Marte. */
 interface MarsApiService {
-    /**
-     * Returns a [List] of [MarsPhoto] and this method can be called from a Coroutine.
-     * The @GET annotation indicates that the "photos" endpoint will be requested with the GET
-     * HTTP method
-     */
+    /** Solicita GET /photos y devuelve las fotografías como una lista Kotlin. */
     @GET("photos")
     suspend fun getPhotos(): List<MarsPhoto>
 }

@@ -18,20 +18,16 @@ package com.example.marsphotos.data
 import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.network.MarsApiService
 
-/**
- * Repository that fetch mars photos list from marsApi.
- */
+/** Define las operaciones de consulta utilizadas por el ViewModel. */
 interface MarsPhotosRepository {
-    /** Fetches list of MarsPhoto from marsApi */
+    /** Obtiene la lista de fotografías de Marte. */
     suspend fun getMarsPhotos(): List<MarsPhoto>
 }
 
-/**
- * Network Implementation of Repository that fetch mars photos list from marsApi.
- */
+/** Obtiene fotografías a través del servicio Retrofit recibido por constructor. */
 class NetworkMarsPhotosRepository(
     private val marsApiService: MarsApiService
 ) : MarsPhotosRepository {
-    /** Fetches list of MarsPhoto from marsApi*/
+    /** Devuelve los datos proporcionados por la API. */
     override suspend fun getMarsPhotos(): List<MarsPhoto> = marsApiService.getPhotos()
 }

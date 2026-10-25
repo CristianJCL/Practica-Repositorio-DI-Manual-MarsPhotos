@@ -19,8 +19,9 @@ import android.app.Application
 import com.example.marsphotos.data.AppContainer
 import com.example.marsphotos.data.DefaultAppContainer
 
+/** Inicializa las dependencias compartidas de red y acceso a fotografías. */
 class MarsPhotosApplication : Application() {
-    /** AppContainer instance used by the rest of classes to obtain dependencies */
+    /** Contenedor de dependencias disponible durante la ejecución de la aplicación. */
     lateinit var container: AppContainer
     override fun onCreate() {
         super.onCreate()
