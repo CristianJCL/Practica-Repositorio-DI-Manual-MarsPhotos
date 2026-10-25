@@ -47,6 +47,7 @@ import com.example.marsphotos.R
 import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.ui.theme.MarsPhotosTheme
 
+/** Elige qué componente mostrar según el estado del ViewModel. */
 @Composable
 fun HomeScreen(
     marsUiState: MarsUiState,
@@ -63,9 +64,7 @@ fun HomeScreen(
     }
 }
 
-/**
- * The home screen displaying the loading message.
- */
+/** Muestra el indicador mientras se recuperan las fotografías. */
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
@@ -75,9 +74,7 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     )
 }
 
-/**
- * The home screen displaying error message with re-attempt button.
- */
+/** Presenta un mensaje cuando falla la conexión y permite reintentar. */
 @Composable
 fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
     Column(
@@ -95,9 +92,7 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
     }
 }
 
-/**
- * The home screen displaying photo grid.
- */
+/** Dibuja la colección de fotografías en una cuadrícula adaptable. */
 @Composable
 fun PhotosGridScreen(
     photos: List<MarsPhoto>,

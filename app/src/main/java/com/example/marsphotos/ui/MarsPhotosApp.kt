@@ -37,6 +37,7 @@ import com.example.marsphotos.ui.screens.HomeScreen
 import com.example.marsphotos.ui.screens.MarsViewModel
 
 @Composable
+/** Monta la barra superior y conecta la pantalla con MarsViewModel. */
 fun MarsPhotosApp() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(

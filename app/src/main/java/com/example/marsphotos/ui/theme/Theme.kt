@@ -46,8 +46,7 @@ private val LightColorScheme = lightColorScheme(
 @Composable
 fun MarsPhotosTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    // Dynamic color in this app is turned off for learning purposes
+    // Los colores dinámicos pueden activarse a partir de Android 12.
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
@@ -67,7 +66,7 @@ fun MarsPhotosTheme(
             window.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat
                 .getInsetsController(window, view)
-                .isAppearanceLightStatusBars = darkTheme
+                .isAppearanceLightStatusBars = !darkTheme
         }
     }
     MaterialTheme(

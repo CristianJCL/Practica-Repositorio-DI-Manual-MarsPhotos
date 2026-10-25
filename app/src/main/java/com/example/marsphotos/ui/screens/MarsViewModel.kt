@@ -31,31 +31,25 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 
-/**
- * UI state for the Home screen
- */
+/** Representa la carga, el error o la respuesta de la pantalla principal. */
 sealed interface MarsUiState {
     data class Success(val photos: List<MarsPhoto>) : MarsUiState
     object Error : MarsUiState
     object Loading : MarsUiState
 }
 
+/** Controla la consulta de fotografías sin depender directamente de Retrofit. */
 class MarsViewModel(private val marsPhotosRepository: MarsPhotosRepository) : ViewModel() {
-    /** The mutable State that stores the status of the most recent request */
+    /** Estado observable que determina el contenido visible en Compose. */
     var marsUiState: MarsUiState by mutableStateOf(MarsUiState.Loading)
         private set
 
-    /**
-     * Call getMarsPhotos() on init so we can display status immediately.
-     */
+    /** Solicita las fotos al crear el ViewModel para mostrar la galería. */
     init {
         getMarsPhotos()
     }
 
-    /**
-     * Gets Mars photos information from the Mars API Retrofit service and updates the
-     * [MarsPhoto] [List] [MutableList].
-     */
+    /** Consulta el Repository y actualiza la UI sin bloquear el hilo principal. */
     fun getMarsPhotos() {
         viewModelScope.launch {
             marsUiState = MarsUiState.Loading
@@ -69,9 +63,7 @@ class MarsViewModel(private val marsPhotosRepository: MarsPhotosRepository) : Vi
         }
     }
 
-    /**
-     * Factory for [MarsViewModel] that takes [MarsPhotosRepository] as a dependency
-     */
+    /** Crea el ViewModel con el Repository obtenido desde MarsPhotosApplication. */
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
